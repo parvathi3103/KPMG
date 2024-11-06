@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sign-in-container">
+        <div class="left-section">
+            <img src="assets/logo.png" alt="Logo" class="logo">
+            <h1>BASE</h1>
+            <div class="social-icons">
+                <img src="assets/github-icon.png" alt="GitHub" class="icon">
+                <img src="assets/twitter-icon.png" alt="Twitter" class="icon">
+                <img src="assets/linkedin-icon.png" alt="LinkedIn" class="icon">
+                <img src="assets/discord-icon.png" alt="Discord" class="icon">
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Welcome Back</h2>
+            <p>Sign in to access your dashboard</p>
+            <button class="social-login google">Sign in with Google</button>
+            <button class="social-login apple">Sign in with Apple</button>
+            <form>
+                <input type="email" placeholder="Email address" required class="input-field">
+                <input type="password" placeholder="Password" required class="input-field">
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit" class="btn-submit">Sign In</button>
+            </form>
+            <p>Don’t have an account? <a href="#" class="register-link">Register here</a></p>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="assets/chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2 class="logo">Board.</h2>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Transactions</a>
+                <a href="#" class="nav-link">Schedules</a>
+                <a href="#" class="nav-link">Users</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+            <footer class="sidebar-footer">
+                <p>Help</p>
+                <p>Contact Us</p>
+            </footer>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h2>Dashboard</h2>
+                <input type="search" placeholder="Search..." class="search-bar">
+                <div class="profile-icon">
+                    <img src="assets/user-icon.png" alt="User">
+                </div>
+            </header>
+            <section class="stats-cards">
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <p>$2,129,430</p>
+                </div>
+                <div class="card">
+                    <h3>Total Transactions</h3>
+                    <p>1,520</p>
+                </div>
+                <div class="card">
+                    <h3>Total Likes</h3>
+                    <p>9,721</p>
+                </div>
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p>9,721</p>
+                </div>
+            </section>
+            <section class="charts">
+                <div class="chart-container" id="activities-chart-container">
+                    <canvas id="activities-chart"></canvas>
+                </div>
+                <div class="chart-container" id="top-products-chart-container">
+                    <canvas id="top-products-chart"></canvas>
+                </div>
+            </section>
+            <button id="add-profile" class="add-profile-btn">Add Profile</button>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="profile-modal">
+        <div class="modal-content">
+            <h3>Add New Profile</h3>
+            <form>
+                <label>Name:</label>
+                <input type="text" placeholder="John Doe">
+                <label>Email:</label>
+                <input type="email" placeholder="john@xyz.com">
+                <label>Phone:</label>
+                <input type="tel" placeholder="1234567890">
+                <button type="button" class="btn-next">Next</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:blue;
+}
+
+/* Sign-In Page */
+.sign-in-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left-section {
+    background: linear-gradient(135deg, #6C63FF, #584AFF);
+    color: white;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.right-section {
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #3778C2;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    height: 100vh;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Stats Cards */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 1rem;
+    background-color: blue;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+document.getElementById("add-profile").addEventListener("click", function() {
+    document.getElementById("profile-modal").style.display = "flex";
+});
+
+// Close modal
+document.querySelector(".modal").addEventListener("click", function(e) {
+    if (e.target === this) {
+        this.style.display = "none";
+    }
+});
+const ctx = document.getElementById('activities-chart').getContext('2d');
